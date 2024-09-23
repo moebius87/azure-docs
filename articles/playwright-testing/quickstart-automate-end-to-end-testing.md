@@ -138,7 +138,7 @@ Update the CI workflow definition to run your Playwright tests with the Playwrig
           
     - task: AzureCLI@2
       displayName: Run Playwright Test  
-        env:
+      env:
         PLAYWRIGHT_SERVICE_URL: $(PLAYWRIGHT_SERVICE_URL)
         PLAYWRIGHT_SERVICE_RUN_ID: ${{ parameters.runIdPrefix }}$(Build.DefinitionName) - $(Build.BuildNumber) - $(System.JobAttempt) 
       inputs:
@@ -147,7 +147,7 @@ Update the CI workflow definition to run your Playwright tests with the Playwrig
         scriptLocation: 'inlineScript'
         inlineScript: |
           npx playwright test -c playwright.service.config.ts --workers=20
-      addSpnToEnvironment: true
+        addSpnToEnvironment: true
       workingDirectory: path/to/playwright/folder # update accordingly
 
     - task: PublishPipelineArtifact@1
